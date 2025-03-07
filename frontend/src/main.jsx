@@ -5,42 +5,22 @@ import {
   RouterProvider
 } from 'react-router-dom';
 import Index from './routes';
-import 'bootstrap/dist/css/bootstrap.css'
 import Login from './routes/login';
 import Register from './routes/register';
-import ViewBooking from './routes/bookings/id';
-import ViewBookings from './routes/bookings';
-import BookingsHotels from './routes/bookings/hotel';
-import BookingsAtHotel from './routes/bookings/bookings_at_hotel';
+import 'bootstrap/dist/css/bootstrap.css'
 
 const router = createBrowserRouter([
   {
-    path:'/',
-    element:<Index/>
+    path: '/',
+    element: <Index />
   },
   {
-    path:'/login',
-    element:<Login/>
+    path: '/login',
+    element: <Login />
   },
   {
-    path:'/register',
-    element:<Register/>
-  },
-  {
-    path:'/bookings/:bookingID',
-    element:<ViewBooking/>
-  },
-  {
-    path:'/bookings',
-    element:<ViewBookings/>
-  },
-  {
-    path:'/bookings/hotel',
-    element:<BookingsHotels/>
-  },
-  {
-    path:'/bookings/hotel/:id',
-    element:<BookingsAtHotel/>
+    path: '/register',
+    element: <Register />,
   }
 ]);
 

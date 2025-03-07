@@ -1,14 +1,13 @@
-const {MongoClient} = require('mongodb');
+const { MongoClient } = require('mongodb');
 var url = 'mongodb://localhost:27017/';
 
-async function CheckEmailExists(email)
-{
+async function CheckEmailExists(email) {
     var client = new MongoClient(url);
-    var database = client.db('hotel');
+    var database = client.db('startup');
     var collection = database.collection('users');
 
     var count = await collection.countDocuments({
-        email:email
+        email: email
     })
 
     return count >= 1;
@@ -22,4 +21,4 @@ async function CheckEmailExists(email)
     */
 }
 
-module.exports = {CheckEmailExists}
+module.exports = { CheckEmailExists }

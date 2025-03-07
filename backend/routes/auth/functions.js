@@ -1,46 +1,45 @@
 const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
 var url = "mongodb://localhost:27017/";
-const {MongoClient} = require('mongodb');
+const { MongoClient } = require('mongodb');
 
-function generateAccessToken(email)
-{
+function generateAccessToken(email, remember) {
     dotenv.config();
-    return jwt.sign({email},process.env.TOKEN_SECRET,{expiresIn:'1800s'});
+    if (remember) {
+        return jwt.sign({ email }, process.env.TOKEN_SECRET, { expiresIn: '7d' });
+    } else {
+        return jwt.sign({ email }, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
+    }
+
 }
 
-function authenticateToken(authHeader)
-{
+function authenticateToken(authHeader) {
     dotenv.config();
     const token = authHeader && authHeader.split(' ')[1];
     return jwt.verify(token, process.env.TOKEN_SECRET);
 }
 
-function getEmailFromAuth(authHeader)
-{
+function getEmailFromAuth(authHeader) {
     dotenv.config();
     const token = authHeader && authHeader.split(' ')[1];
-    if(jwt.verify(token, process.env.TOKEN_SECRET))
-    {
+    if (jwt.verify(token, process.env.TOKEN_SECRET)) {
         return jwt.decode(token).email;
-    }else{
+    } else {
         return false;
     }
 }
 
-async function getIDFromAuth(authHeader)
-{
+async function getIDFromAuth(authHeader) {
     dotenv.config();
     const token = authHeader && authHeader.split(' ')[1];
-    if(jwt.verify(token, process.env.TOKEN_SECRET))
-    {
-        var email =  jwt.decode(token).email;
+    if (jwt.verify(token, process.env.TOKEN_SECRET)) {
+        var email = jwt.decode(token).email;
         var client = new MongoClient(url);
-        var database = client.db('hotel');
+        var database = client.db('startup');
         var collection = database.collection('users');
-        var user = await collection.findOne({email});
+        var user = await collection.findOne({ email });
         return user._id;
-    }else{
+    } else {
         return false;
     }
 }
