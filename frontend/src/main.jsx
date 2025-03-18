@@ -8,6 +8,7 @@ import Index from './routes';
 import Login from './routes/login';
 import Register from './routes/register';
 import 'bootstrap/dist/css/bootstrap.css'
+import GreenProduct from './routes/Green Products';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: <Register />,
+  },
+  {
+    path: '/products',
+    element: <GreenProduct/>
   }
 ]);
 

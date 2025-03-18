@@ -1,23 +1,26 @@
-import React from 'react'
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import { Container, Navbar, Nav } from 'react-bootstrap';
 
 const MainNavigation = () => {
     return (
         <>
-            <Navbar bg="light" data-bs-theme="light">
-                <Container>
-                    <Navbar.Brand href="/#home"><strong>Security INC</strong></Navbar.Brand>
-                    <Nav className="me-auto">
-                        <Nav.Link className="me-auto" href="/#home"><strong>Home</strong></Nav.Link>
-                        <Nav.Link href="/login"><strong>Login</strong></Nav.Link>
-                        <Nav.Link href="/register"><strong>Register</strong></Nav.Link>
-                    </Nav>
-                </Container>
-            </Navbar>
+          <Navbar className="bg-body-tertiary">
+            <Container>
+              <Navbar.Brand href="/">
+                <img
+                  alt=""
+                  src="https://www.pngplay.com/wp-content/uploads/6/Energy-Logo-PNG-Clipart-Background.png"
+                  width="30"
+                  height="30"
+                  className="d-inline-block align-top"
+                />{' '}
+                <strong>Rolsa Technologies</strong>
+              </Navbar.Brand>
+                <Nav.Link class="fs-5 text-dark" href="/login"><strong>Login</strong></Nav.Link>
+            </Container>
+          </Navbar>
+
         </>
-    )
-}
+      );
+    }
 
 export default MainNavigation

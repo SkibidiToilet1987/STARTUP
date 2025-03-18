@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import MainNavigation from '../../components/MainNavigation';
 
 export default function Login() {
-    const [cookies, setCookies] = useCookies(['token']);
+    const [, setCookies] = useCookies(['token']);
     const [show, setShow] = useState(false);
     const [message, setMessage] = useState("");
     const navigate = useNavigate();
